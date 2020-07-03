@@ -1,0 +1,206 @@
+@font-face {
+  font-family: Overpass-Light;
+  src: url(./assets/font/Overpass-Light.ttf);
+}
+
+body {
+  background-color: #0b1622;
+  font-family: Overpass-Light;
+}
+
+.svgfill {
+  filter: invert(56%) sepia(96%) saturate(686%) hue-rotate(171deg) brightness(97%) contrast(95%);
+  vertical-align: sub;
+}
+
+.searchbutton {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  .container {
+    width: 100%;
+    padding-top: 35px;
+    margin-bottom: 5px;
+    color: #ffffff;
+    display:inline-block;
+    text-align: center
+}
+
+  .allitems {
+    width: 820px;
+    height: 1250px;
+    display:inline-block;
+    text-align: center
+}
+
+
+.allitems .item {
+  float: left;
+  overflow: hidden;
+}
+
+.item {
+  width: 400px;
+  height: 115px;
+  background-color: #151f2e;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.item .cover img {
+  width: 80px;
+  height: 115px;
+  float: left;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.item .allitems_right {
+  float: left;
+  width: 320px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.allitems .item_name {
+  float: left;
+  width: 100%;
+  line-height: 23px;
+  margin: 0px;
+  background-color: #202f45
+}
+
+h3.item_name {
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  color: #3db4f2
+}
+
+/*.allitems_right .item_chapter a {
+  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}*/
+
+.allitems_right span {
+  font-size: 14px;
+  line-height:20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.allitems_right .item_chapter_left {
+  float: left;
+  width: 47%;
+  margin: 3px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+.allitems_right .item_chapter_right {
+  float: right;
+  width: 47%;
+  margin: 3px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+
+/*.allitems_right .item_pages a {
+  padding: 8px 12px;
+  text-transform: uppercase;
+  color: #fff;
+  font: 700 11px sans-serif;
+  background: #151f2e;
+  display: inline-block;
+  margin-right: 5px;
+}*/
+
+.item_pages a.active {
+  background: #3db4f2!important;
+  color: #202f45!important;
+}
+
+.soloitems {
+  width: 820px;
+  height: 1250px;
+  display:inline-block;
+  text-align: center
+}
+.soloitems .item {
+  float: left;
+  overflow: hidden;
+}
+
+.soloitems .cover img {
+  float: left;
+  width: 220px;
+  height: 330px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.soloitems .manga-info {
+  width: 600px;
+  height: 330px;
+  display: inline-block;
+}
+
+.manga-info .item_name {
+  width: 100%;
+  margin: 0px;
+  background-color: #202f45
+}
+
+.manga-info h1.item_name {
+  font-size: 25px;
+  margin-bottom: 0;
+  color: #3db4f2
+}
+
+.manga-info .item_name_alt {
+  width: 100%;
+  margin: 0px;
+  background-color: #202f45
+}
+
+.manga-info h2.item_name_alt {
+  font-size: 13px;
+  margin-top: 0px;
+  color: #3d98f2
+}
+
+.manga-info .manga_items_info {
+  text-align: center;
+  margin-top: 7px;
+  margin-bottom: 0px;
+}
+
+.manga-info .description {
+  padding: 10px 2%;
+  margin-bottom: 0px;
+  overflow: hidden;
+}
+
+.soloitems .manga-chapters {
+  height: inherit;
+  margin-top: 7px;
+  background-color: #000000
+}

@@ -1,0 +1,30 @@
+{
+  "name": "manga-scraper",
+  "version": "0.0.1",
+  "description": "App to download and pack manga for tachiyomi.",
+  "main": "main.js",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "cheerio": "^0.22.0",
+    "del": "^5.1.0",
+    "image-downloader": "^4.0.1",
+    "update-electron-app": "^1.5.0",
+    "zip-a-folder": "^0.0.12"
+  },
+  "devDependencies": {
+    "electron": "^9.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bandaras213/manga-scraper.git"
+  },
+  "author": "Bandaras",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bandaras213/manga-scraper/issues"
+  },
+  "homepage": "https://github.com/Bandaras213/manga-scraper#readme"
+}
