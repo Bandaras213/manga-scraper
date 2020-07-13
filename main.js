@@ -1,13 +1,98 @@
 const {
   app,
+  ipcMain,
   autoUpdater,
   dialog,
   BrowserWindow,
   Menu
 } = require('electron')
 
-const server = 'https://your-deployment-url.com'
+ipcMain.on('getapppath', (event) => {
+  const result = app.getAppPath()
+  event.reply('getapppath', result)
+})
+
+ipcMain.on('getdownloadpath', (event) => {
+  const result = app.getPath("downloads")
+  event.reply('getdownloadpath', result)
+})
+
+function createdownloadWindow() {
+  let win2 = new BrowserWindow({
+    width: 400, //400
+    height: 130, //100
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+  win2.removeMenu()
+  win2.loadFile('download.html')
+  win2.setResizable(false)
+  win2.center()
+  //win2.webContents.openDevTools()
+}
+
+ipcMain.on('checkids', (event) => {
+  let result = BrowserWindow.getAllWindows().length
+  if (result < 2) {
+    createdownloadWindow()
+  }
+})
+
+ipcMain.on('statusupd', (event, args) => {
+  let winarray = BrowserWindow.getAllWindows()
+  let last_winarray = winarray[winarray.length -2];
+  last_winarray.webContents.executeJavaScript(`
+  document.getElementsByClassName("manganame")[0].innerHTML = "${args[0]}" + " ${args[3]}"
+  document.getElementsByClassName("chapternumber")[0].innerHTML = ${args[1]} + "/" + ${args[2]}
+  document.getElementsByClassName("myBar")[0].style.width = 100/${args[2]} * ${args[1]} + "%";
+  `)
+})
+
+ipcMain.on('statuspacked', (event, args) => {
+  let winarray = BrowserWindow.getAllWindows()
+  let last_winarray = winarray[winarray.length -2];
+  last_winarray.webContents.executeJavaScript(`
+  document.getElementsByClassName("packed")[0].innerHTML = "Completed: " + "${args[0]}"
+  `)
+})
+
+ipcMain.on('statusdel', (event, args) => {
+  let winarray = BrowserWindow.getAllWindows()
+  let last_winarray = winarray[winarray.length -2];
+  last_winarray.webContents.executeJavaScript(`
+  document.getElementsByClassName("deleted")[0].innerHTML = "Deleted: " + "${args[0]}" + " folder."
+  `)
+})
+
+ipcMain.on('changecss', () => {
+  let winarray = BrowserWindow.getAllWindows()
+  let last_winarray = winarray[winarray.length -2];
+  last_winarray.webContents.on('dom-ready', () => {
+  last_winarray.webContents.executeJavaScript(`
+    c1 = document.createElement('div')
+    c1.className = "manganame"
+    document.getElementsByClassName("container2")[0].appendChild(c1)
+    c2 = document.createElement('div')
+    c2.className = "chapternumber"
+    document.getElementsByClassName("container2")[0].appendChild(c2)
+    c3 = document.createElement('div')
+    c3.className = "myProgress"
+    c3.innerHTML = '<div class="myBar"></div>'
+    document.getElementsByClassName("container2")[0].appendChild(c3)
+    c4 = document.createElement('div')
+    c4.className = "packed"
+    document.getElementsByClassName("container2")[0].appendChild(c4)
+    c5 = document.createElement('div')
+    c5.className = "deleted"
+    document.getElementsByClassName("container2")[0].appendChild(c5)
+    `)
+  })
+})
+
+/*const server = 'https://manga-scraper-update.herokuapp.com'
 const url = `${server}/update/${process.platform}/${app.getVersion()}`
+console.log(url)
 
 autoUpdater.setFeedURL({ url })
 
@@ -32,14 +117,17 @@ setInterval(() => {
  autoUpdater.on('error', message => {
   console.error('There was a problem updating the application')
   console.error(message)
- })
+ })*/
 
 function createWindow() {
   // Erstelle das Browser-Fenster.
   var menu = Menu.buildFromTemplate([{
     label: 'Menu',
     submenu: [{
-        label: 'Poop'
+        label: 'Open DevTools',
+        click() {
+          win.webContents.openDevTools()
+        }
       },
       {
         type: 'separator'
